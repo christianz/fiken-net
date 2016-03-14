@@ -44,12 +44,8 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
     <Reference Include="Tavis.UriTemplates, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Tavis.UriTemplates.0.6.4\lib\Net45\Tavis.UriTemplates.dll</HintPath>
       <Private>True</Private>
@@ -57,7 +53,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Api\FikenDateTimeConverter.cs" />
-    <Compile Include="AsyncHelpers.cs" />
     <Compile Include="FikenAccount.cs" />
     <Compile Include="FikenAddress.cs" />
     <Compile Include="FikenAttachment.cs" />
