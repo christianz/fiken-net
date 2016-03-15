@@ -39,6 +39,20 @@ namespace Fiken.Net
             return Session.Root().Get("payments").Get("payments").Items<FikenPayment>().Data();
         }
 
+        public FikenInvoice GetInvoice(int invoiceNo)
+        {
+            var parent = Session.Root().Get("invoices");
+
+            if (!parent.Has("invoices"))
+                return null;
+
+            var invoice = parent.Get("invoices", new { invoiceNo }).Item<FikenInvoice>();
+            var deSerialized = invoice.Data;
+            deSerialized.Url = new Uri(invoice.Links[0].Href);
+
+            return deSerialized;
+        }
+
         public IEnumerable<FikenInvoice> GetInvoices()
         {
             var parent = Session.Root().Get("invoices");
@@ -162,6 +176,20 @@ namespace Fiken.Net
             deSerialized.Url = new Uri(account.Links[0].Href);
 
             return deSerialized;
+        }
+
+        public void SendInvoiceEmail(int invoiceNo, string recipientEmail, string recipientName, string emailSendOption = "auto")
+        {
+            var invoice = GetInvoice(invoiceNo);
+
+            Session.Root().Post("document-sending-service", new { resource = invoice.Url, method = "email", recipientEmail, recipientName, emailSendOption });
+        }
+
+        public void SendInvoiceEhf(int invoiceNo, string organizationNumber)
+        {
+            var invoice = GetInvoice(invoiceNo);
+
+            Session.Root().Post("document-sending-service", new { resource = invoice.Url, method = "ehf", organizationNumber });
         }
 
         public IEnumerable<FikenSale> GetSales()
