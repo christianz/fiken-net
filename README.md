@@ -2,6 +2,7 @@
 C# library for interacting with the Fiken API
 
 See the documentation at https://fiken.no/api/doc/
+
 The HAL browser for Fiken is accessible from https://fiken.no/api/browser/browser.html#/api/v1
 
 # Usage

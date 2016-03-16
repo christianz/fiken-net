@@ -66,9 +66,11 @@ namespace Fiken.Net
             }
         }
 
-        public void InsertInvoice(FikenCreateInvoice invoice)
+        public FikenInvoice InsertInvoice(FikenCreateInvoice invoice)
         {
-            Session.Root().Post("create-invoice-service", invoice);
+            var insertedInvoice = Session.Root().Post("create-invoice-service", invoice);
+
+            return insertedInvoice.Item<FikenInvoice>().Data;
         }
 
         public void SaveProduct(FikenProduct product)
