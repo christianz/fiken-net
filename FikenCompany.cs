@@ -73,21 +73,24 @@ namespace Fiken.Net
             return insertedInvoice.Item<FikenInvoice>().Data;
         }
 
-        public void SaveProduct(FikenProduct product)
+        public FikenProduct SaveProduct(FikenProduct product)
         {
             var root = Session.Root();
+            IResource<FikenProduct> response;
 
             if (string.IsNullOrEmpty(product.Url.ToString()))
             {
-                root.Post("products", product);
+                response = root.Post("products", product).Item<FikenProduct>();
             }
             else
             {
-                root.Put("products", product);
+                response = root.Put("products", product).Item<FikenProduct>();
             }
+
+            return response.Data;
         }
 
-        public void SaveContact(FikenContact contact)
+        public FikenContact SaveContact(FikenContact contact)
         {
             var root = Session.Root();
 
@@ -99,20 +102,28 @@ namespace Fiken.Net
             {
                 root.Put("contacts", contact);
             }
+
+            contact = GetContact(contact.Email);
+
+            return contact;
         }
 
-        public void SaveSale(FikenSale sale)
+        public FikenSale SaveSale(FikenSale sale)
         {
             var root = Session.Root();
 
-            root.Post("sales", sale);
+            var response = root.Post("sales", sale).Item<FikenSale>();
+
+            return response.Data;
         }
 
-        public void SavePayment(FikenPayment payment)
+        public FikenPayment SavePayment(FikenPayment payment)
         {
             var root = Session.Root();
 
-            root.Post("payments", payment);
+            var response = root.Post("payments", payment).Item<FikenPayment>();
+
+            return response.Data;
         }
 
         public IEnumerable<FikenProduct> GetProducts()
@@ -158,6 +169,16 @@ namespace Fiken.Net
         public FikenContact GetContact(int customerNumber)
         {
             var contact = Session.Root().Get("contacts").Get("contacts", new { customerNumber }).Item<FikenContact>();
+
+            var deSerialized = contact.Data;
+            deSerialized.Url = new Uri(contact.Links[0].Href);
+
+            return deSerialized;
+        }
+
+        public FikenContact GetContact(string email)
+        {
+            var contact = Session.Root().Get("contacts").Get("contacts", new { email }).Item<FikenContact>();
 
             var deSerialized = contact.Data;
             deSerialized.Url = new Uri(contact.Links[0].Href);
