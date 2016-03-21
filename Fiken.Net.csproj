@@ -30,10 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="HoneyBear.HalClient, Version=1.0.40.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>packages\HoneyBear.HalClient.1.0.40.0\lib\net452\HoneyBear.HalClient.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -72,6 +68,22 @@
     <Compile Include="FikenSale.cs" />
     <Compile Include="Api\HalJsonMediaTypeFormatter.cs" />
     <Compile Include="Api\LowerCamelCaseContractResolver.cs" />
+    <Compile Include="HalClient\HalClient.cs" />
+    <Compile Include="HalClient\Http\HalJsonMediaTypeFormatter.cs" />
+    <Compile Include="HalClient\Http\IJsonHttpClient.cs" />
+    <Compile Include="HalClient\Http\JsonHttpClient.cs" />
+    <Compile Include="HalClient\IHalClient.cs" />
+    <Compile Include="HalClient\Models\FailedToResolveRelationship.cs" />
+    <Compile Include="HalClient\Models\ILink.cs" />
+    <Compile Include="HalClient\Models\INode.cs" />
+    <Compile Include="HalClient\Models\IResource.cs" />
+    <Compile Include="HalClient\Models\Link.cs" />
+    <Compile Include="HalClient\Models\NoActiveResource.cs" />
+    <Compile Include="HalClient\Models\Resource.cs" />
+    <Compile Include="HalClient\Models\ResourceConverterExtenstions.cs" />
+    <Compile Include="HalClient\Models\TemplateParametersAreRequired.cs" />
+    <Compile Include="HalClient\Serialization\HalResourceJsonConverter.cs" />
+    <Compile Include="HalClient\Serialization\HalResourceJsonReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
