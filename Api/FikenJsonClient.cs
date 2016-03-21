@@ -2,7 +2,7 @@
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using HoneyBear.HalClient.Http;
+using Fiken.Net.HalClient.Http;
 
 namespace Fiken.Net.Api
 {

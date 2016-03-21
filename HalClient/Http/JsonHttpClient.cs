@@ -2,7 +2,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
-namespace HoneyBear.HalClient.Http
+namespace Fiken.Net.HalClient.Http
 {
     internal sealed class JsonHttpClient : IJsonHttpClient
     {

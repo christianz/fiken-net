@@ -2,9 +2,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using Fiken.Net.HalClient.Models;
 using Newtonsoft.Json.Linq;
 
-namespace HoneyBear.HalClient.Models
+namespace Fiken.Net.HalClient.Models
 {
     /// <summary>
     /// Contains a set of IResource extensions.

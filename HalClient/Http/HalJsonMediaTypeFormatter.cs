@@ -1,7 +1,7 @@
 using System.Net.Http.Formatting;
 using System.Net.Http.Headers;
 
-namespace HoneyBear.HalClient.Http
+namespace Fiken.Net.HalClient.Http
 {
     internal class HalJsonMediaTypeFormatter : JsonMediaTypeFormatter
     {

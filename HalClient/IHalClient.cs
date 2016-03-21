@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using HoneyBear.HalClient.Models;
+using Fiken.Net.HalClient.Models;
 
-namespace HoneyBear.HalClient
+namespace Fiken.Net.HalClient
 {
     /// <summary>
     /// A lightweight fluent .NET client for navigating and consuming HAL APIs.

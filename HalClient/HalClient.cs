@@ -1,17 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
-using System.Net;
 using System.Net.Http;
 using System.Net.Http.Formatting;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
-using HoneyBear.HalClient.Http;
-using HoneyBear.HalClient.Models;
+using Fiken.Net.HalClient.Http;
+using Fiken.Net.HalClient.Models;
 using Tavis.UriTemplates;
 
-namespace HoneyBear.HalClient
+namespace Fiken.Net.HalClient
 {
     /// <summary>
     /// A lightweight fluent .NET client for navigating and consuming HAL APIs.

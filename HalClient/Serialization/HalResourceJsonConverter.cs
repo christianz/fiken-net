@@ -1,8 +1,8 @@
 ﻿using System;
-using HoneyBear.HalClient.Models;
+using Fiken.Net.HalClient.Models;
 using Newtonsoft.Json;
 
-namespace HoneyBear.HalClient.Serialization
+namespace Fiken.Net.HalClient.Serialization
 {
     internal sealed class HalResourceJsonConverter : JsonConverter
     {

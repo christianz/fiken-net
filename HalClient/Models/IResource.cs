@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using HoneyBear.HalClient.Serialization;
+using Fiken.Net.HalClient.Serialization;
 using Newtonsoft.Json;
 
-namespace HoneyBear.HalClient.Models
+namespace Fiken.Net.HalClient.Models
 {
     /// <summary>
     /// Represents a generic HAL resource.

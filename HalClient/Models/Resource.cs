@@ -1,6 +1,7 @@
 using System.Collections.Generic;
+using Fiken.Net.HalClient.Models;
 
-namespace HoneyBear.HalClient.Models
+namespace Fiken.Net.HalClient.Models
 {
     internal sealed class Resource : Dictionary<string, object>, IResource
     {

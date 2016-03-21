@@ -1,6 +1,6 @@
 using System;
 
-namespace HoneyBear.HalClient.Models
+namespace Fiken.Net.HalClient.Models
 {
     internal sealed class FailedToResolveRelationship : Exception
     {

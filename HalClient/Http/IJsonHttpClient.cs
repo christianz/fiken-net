@@ -1,7 +1,7 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace HoneyBear.HalClient.Http
+namespace Fiken.Net.HalClient.Http
 {
     /// <summary>
     /// Provides a wrapper for <see cref="System.Net.Http.HttpClient"/> that processes JSON HTTP requests and responses.

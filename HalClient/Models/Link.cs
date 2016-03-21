@@ -1,4 +1,4 @@
-namespace HoneyBear.HalClient.Models
+namespace Fiken.Net.HalClient.Models
 {
     internal sealed class Link : ILink
     {
