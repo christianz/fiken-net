@@ -90,7 +90,7 @@ namespace Fiken.Net
             return response.Data;
         }
 
-        public FikenContact SaveContact(FikenContact contact)
+        public void SaveContact(FikenContact contact)
         {
             var root = Session.Root();
 
@@ -102,10 +102,6 @@ namespace Fiken.Net
             {
                 root.Put("contacts", contact);
             }
-
-            contact = GetContact(contact.Email);
-
-            return contact;
         }
 
         public FikenSale SaveSale(FikenSale sale)
@@ -176,6 +172,11 @@ namespace Fiken.Net
             return deSerialized;
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns></returns>
         public FikenContact GetContact(string email)
         {
             var contact = Session.Root().Get("contacts").Get("contacts", new { email }).Item<FikenContact>();
