@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using HoneyBear.HalClient.Models;
+using Fiken.Net.HalClient.Models;
 
 namespace Fiken.Net
 {
@@ -43,10 +43,10 @@ namespace Fiken.Net
         {
             var parent = Session.Root().Get("invoices");
 
-            if (!parent.Has("invoices"))
-                return null;
+            //if (!parent.Has("invoices"))
+            //    return null;
 
-            var invoice = parent.Get("invoices", new { invoiceNo }).Item<FikenInvoice>();
+            var invoice = parent.Get("invoices", new { invoiceNumber = invoiceNo }).Item<FikenInvoice>();
             var deSerialized = invoice.Data;
             deSerialized.Url = new Uri(invoice.Links[0].Href);
 
@@ -68,9 +68,9 @@ namespace Fiken.Net
 
         public FikenInvoice InsertInvoice(FikenCreateInvoice invoice)
         {
-            var insertedInvoice = Session.Root().Post("create-invoice-service", invoice);
-
-            return insertedInvoice.Item<FikenInvoice>().Data;
+            var results = Session.Root().Post("create-invoice-service", invoice);
+            
+            return results.Item<FikenInvoice>().Data;
         }
 
         public FikenProduct SaveProduct(FikenProduct product)
@@ -90,18 +90,21 @@ namespace Fiken.Net
             return response.Data;
         }
 
-        public void SaveContact(FikenContact contact)
+        public FikenContact SaveContact(FikenContact contact)
         {
             var root = Session.Root();
+            IResource<FikenContact> response;
 
             if (string.IsNullOrEmpty(contact.CustomerNumber))
             {
-                root.Post("contacts", contact);
+                response = root.Post("contacts", contact).Item<FikenContact>();
             }
             else
             {
-                root.Put("contacts", contact);
+                response = root.Put("contacts", contact).Item<FikenContact>();
             }
+
+            return response.Data;
         }
 
         public FikenSale SaveSale(FikenSale sale)
@@ -172,11 +175,6 @@ namespace Fiken.Net
             return deSerialized;
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="email"></param>
-        /// <returns></returns>
         public FikenContact GetContact(string email)
         {
             var contact = Session.Root().Get("contacts").Get("contacts", new { email }).Item<FikenContact>();
@@ -206,7 +204,7 @@ namespace Fiken.Net
         {
             var invoice = GetInvoice(invoiceNo);
 
-            Session.Root().Post("document-sending-service", new { resource = invoice.Url, method = "email", recipientEmail, recipientName, emailSendOption });
+            Session.Root().Post("document-sending-service", new { resource = invoice.Url, method = "email", recipientEmail, recipientName = recipientEmail, emailSendOption });
         }
 
         public void SendInvoiceEhf(int invoiceNo, string organizationNumber)

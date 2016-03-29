@@ -3,11 +3,10 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
 using Fiken.Net.Api;
-using HoneyBear.HalClient;
 
 namespace Fiken.Net
 {
-    public sealed class FikenSession : HalClient
+    public sealed class FikenSession : HalClient.HalClient
     {
         private const string BaseUrl = "https://fiken.no/api/v1/";
         private const string CompaniesRel = "companies";
